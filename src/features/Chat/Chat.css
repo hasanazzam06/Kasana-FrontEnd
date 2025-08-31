@@ -1,0 +1,190 @@
+/* Pastikan variabel warna ini ada di file CSS global Anda */
+:root {
+  --color-primary: #F2EDD1;
+  --color-secondary: #689B8A;
+  --color-tertiary: #F9CB99;
+  --color-neutral-text: #280A3E;
+  --color-neutral-bg: #EAE6CC;
+  --color-neutral-border: #D1CDAE;
+  --color-text-on-accent: #F2EDD1;
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Atau 100% tergantung parent */
+  overflow: hidden;
+
+  /* --- EFEK GLOSSY & TEMA WARNA --- */
+  background-color: var(--color-neutral-bg); /* Warna dasar yang sedikit lebih gelap */
+  border-left: 1px solid var(--color-neutral-border);
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-neutral-border);
+  flex-shrink: 0;
+
+  /* --- EFEK GLOSSY & TEMA WARNA --- */
+  background-color: var(--color-primary);
+  background-image: radial-gradient(
+    ellipse at top,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.75),
+    0 2px 4px rgba(40, 10, 62, 0.05);
+}
+
+.chat-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-neutral-text);
+}
+
+.close-chat-button {
+  background: none;
+  border: none;
+  color: var(--color-neutral-text);
+  cursor: pointer;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.close-chat-button:hover {
+  opacity: 1;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message {
+  padding: 12px 18px;
+  border-radius: 18px;
+  max-width: 80%;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-accent);
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.ai-message {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-text);
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  border: 1px solid var(--color-neutral-border);
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 15px 20px;
+  border-top: 1px solid var(--color-neutral-border);
+  background-color: var(--color-primary);
+  gap: 10px;
+  align-items: center;
+}
+
+.chat-input-field {
+  flex-grow: 1;
+  padding: 12px 18px;
+  border: 1px solid var(--color-neutral-border);
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  border-radius: 20px;
+  font-size: 1rem;
+  min-width: 0;
+}
+
+.chat-input-field::placeholder {
+  color: var(--color-neutral-text);
+  opacity: 0.6;
+}
+
+.send-button {
+  background-color: var(--color-tertiary);
+  color: var(--color-neutral-text);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.send-button:hover {
+  filter: brightness(95%);
+}
+
+.file-upload-button {
+  background-color: var(--color-neutral-bg);
+  border: 1px solid var(--color-neutral-border);
+  color: var(--color-neutral-text);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.file-upload-button:hover {
+  background-color: var(--color-neutral-border);
+}
+
+.scroll-to-bottom-button {
+  position: absolute;
+  bottom: 100px; /* Disesuaikan agar tidak tertutup input */
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-accent);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-to-bottom-button:hover {
+  background-color: #558779;
+}
+
+.scroll-to-bottom-button.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}

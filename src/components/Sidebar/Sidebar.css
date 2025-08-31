@@ -1,0 +1,190 @@
+.sidebar {
+  width: 220px;
+  /* --- EFEK GLOSSY --- */
+  /* Warna dasar diatur di sini */
+  background-color: var(--color-secondary);
+  /* Gradasi radial untuk ilusi cahaya dari atas */
+  background-image: radial-gradient(
+    ellipse at top,
+    rgba(255, 255, 255, 0.3) 0%, /* Sorotan cahaya putih transparan */
+    rgba(255, 255, 255, 0) 70%
+  );
+  
+  /* --- PENYESUAIAN WARNA --- */
+  /* Teks diubah menjadi terang agar kontras dengan latar belakang gelap */
+  color: var(--color-text-on-accent);
+  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px 15px;
+  
+  /* --- EFEK GLOSSY --- */
+  /* Bayangan dalam (inset) untuk kilau & bayangan luar untuk kedalaman */
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.2), 
+              2px 0 5px rgba(0, 0, 0, 0.2);
+              
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+.sidebar.minimized {
+  width: 45px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.menu-header {
+  font-weight: 600;
+  font-size: 1.2rem;
+  /* --- PENYESUAIAN WARNA --- */
+  color: var(--color-text-on-accent); /* Teks header disesuaikan */
+}
+
+.toggle-button {
+  background: none;
+  /* --- PENYESUAIAN WARNA --- */
+  border: 1px solid rgba(242, 237, 209, 0.5); /* Border terang transparan */
+  color: var(--color-text-on-accent); /* Ikon disesuaikan */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.menu-item:hover {
+  background-color: var(--color-primary); /* Latar terang saat hover */
+  /* --- PENYESUAIAN WARNA --- */
+  color: var(--color-neutral-text); /* Teks gelap saat hover */
+}
+
+.menu-item.active {
+  background-color: var(--color-primary);
+  /* --- PENYESUAIAN WARNA --- */
+  color: var(--color-neutral-text); /* Teks gelap pada item aktif */
+  font-weight: 600; /* Dibuat lebih tebal */
+}
+
+.sidebar.minimized .menu-item {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 12px 5px;
+}
+
+.dropdown-toggle {
+  justify-content: space-between;
+}
+
+.dropdown-arrow {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.icon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.sidebar.minimized .icon {
+  margin: 0 auto;
+}
+
+.project-dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-dropdown-item {
+  padding: 10px 15px 10px 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--color-text-on-accent);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.project-dropdown-item:hover {
+  background-color: var(--color-neutral-border);
+}
+
+.project-dropdown-item.active-project {
+  /* --- PENYESUAIAN WARNA --- */
+  /* Diberi overlay terang agar beda dari sidebar tapi tetap serasi */
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.add-project-button-wrapper {
+  margin-top: auto;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  border-top: 1px solid rgba(242, 237, 209, 0.3); /* Border terang transparan */
+  flex-shrink: 0;
+}
+
+.add-project-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-tertiary);
+    /* --- PENYESUAIAN WARNA --- */
+    color: var(--color-neutral-text); /* Teks gelap agar kontras */
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: filter 0.3s ease;
+}
+
+.add-project-button:hover {
+    filter: brightness(95%); /* Efek hover yang lebih dinamis */
+}
+
+.add-project-button .add-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.sidebar.minimized .add-project-button .add-icon {
+    margin: 0;
+}

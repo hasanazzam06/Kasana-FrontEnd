@@ -1,0 +1,78 @@
+.new-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-neutral-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-neutral-border);
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(104, 155, 138, 0.3);
+}
+
+.form-group small {
+  font-size: 12px;
+  color: var(--color-neutral-text);
+  opacity: 0.7;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Menggunakan kembali gaya tombol dari modal lain untuk konsistensi */
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms, opacity 150ms;
+}
+
+.button-secondary {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.button-secondary:hover {
+  background-color: var(--color-neutral-border);
+}
+
+.button-primary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-accent);
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}

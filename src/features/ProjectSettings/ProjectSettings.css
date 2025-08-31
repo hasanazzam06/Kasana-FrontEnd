@@ -1,0 +1,238 @@
+.settings-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px; /* Padding dipindahkan ke sini agar konsisten */
+}
+
+.settings-container {
+  /* --- EFEK GLOSSY & TEMA WARNA --- */
+  background-color: var(--color-primary);
+  background-image: radial-gradient(
+    ellipse at top,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.75),
+    0 4px 12px rgba(40, 10, 62, 0.05);
+
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--color-neutral-border);
+}
+
+.settings-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-neutral-text);
+  margin: 0 0 8px 0;
+}
+
+.settings-description {
+  font-size: 14px;
+  color: var(--color-neutral-text);
+  opacity: 0.8;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.join-code-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.join-code-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-neutral-text);
+  opacity: 0.7;
+}
+
+.join-code-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-neutral-bg);
+  border: 1px solid var(--color-neutral-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: fit-content;
+}
+
+.join-code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-neutral-text);
+  margin-right: 16px;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.settings-subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: var(--color-neutral-text);
+  border-bottom: 1px solid var(--color-neutral-border);
+  padding-bottom: 12px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-neutral-border);
+  transition: background-color 150ms;
+}
+
+.user-list-item:last-child {
+  border-bottom: none;
+}
+
+.user-list-item:hover {
+  background-color: var(--color-neutral-bg);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-avatar {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-neutral-border);
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--color-neutral-text);
+}
+
+.role-and-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.user-role.role-admin {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-accent);
+}
+
+.promote-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-secondary);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 150ms, transform 150ms;
+}
+
+.promote-button:hover {
+  background-color: var(--color-neutral-bg);
+  transform: scale(1.1);
+}
+
+/* --- Gaya Modal (Sudah Sesuai Tema) --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(40, 10, 62, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+.modal-content.confirmation-modal {
+  background-color: var(--color-primary);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border: 1px solid var(--color-neutral-border);
+}
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-neutral-text);
+  margin-bottom: 12px;
+}
+.modal-text {
+  font-size: 14px;
+  color: var(--color-neutral-text);
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms, opacity 150ms;
+}
+.button-secondary {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+  border: 1px solid var(--color-neutral-border);
+}
+.button-secondary:hover {
+  background-color: var(--color-neutral-border);
+}
+.button-primary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-accent);
+}
+.button-primary:hover {
+  opacity: 0.9;
+}
