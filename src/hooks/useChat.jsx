@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useChat = (activeProjectData, setActiveProjectData) => {
+export const useChat = (setActiveProjectData) => {
   const [chatInput, setChatInput] = useState('');
 
   const handleChatSubmit = () => {

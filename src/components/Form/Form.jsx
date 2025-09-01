@@ -38,14 +38,6 @@ const NewProjectForm = ({ onClose, onCreate }) => {
       }
     };
     fetchProjects();
-
-    // setProjectData({
-    //   name: '',
-    //   description: '',
-    //   budget: '',
-    //   accessCode: '',
-    // })
-    // onClose();
   };
 
   return (

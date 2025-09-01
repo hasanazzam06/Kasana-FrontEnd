@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { User,  X, Trash2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { X, Trash2 } from 'lucide-react';
 import { TableRow } from './TableRow';
+import { fetchTable } from './api';
 import './ExpenseTable.css'; // Impor file CSS baru
 
 // Komponen utama ExpenseTable
 const ExpenseTable = ({ userRole, onVerify, onDelete }) => {
   const [viewingReceipt, setViewingReceipt] = useState(null);
-  // State untuk menyimpan ID expense yang dipilih
   const [selectedIds, setSelectedIds] = useState([]);
-  // State untuk modal konfirmasi hapus
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -16,23 +15,7 @@ const ExpenseTable = ({ userRole, onVerify, onDelete }) => {
 
   const projectId = 'proj-2';
 
-  useEffect(() => {
-    const fetchTable = async () => {
-      try {
-        const response = await fetch(`/api/expenses/table/${projectId}`);
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data proyek');
-        }
-        const result = await response.json();
-        setExpenses(result.data.expenses);
-      } catch (error) {
-        console.error("Error fetching projects: ", error);
-      }  finally {
-        setLoading(false); // Apapun hasilnya, loading selesai
-      }
-    };
-    fetchTable();
-  }, [])
+  useEffect(() => { fetchTable(projectId, setExpenses, setLoading) }, [])
 
   if (loading) {
     return <div>Memuat data dashboard...</div>;

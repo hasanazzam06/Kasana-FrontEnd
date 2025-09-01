@@ -109,12 +109,7 @@ const App = () => {
         {isChatVisible && (
           <Chat
             chatHistory={activeProjectData?.chatHistory || []}
-            // chatInput={chatInput}
-            // onChatInputChange={setChatInput}
-            // onChatSubmit={handleChatSubmit}
-            // onFileUpload={handleFileUpload}
             onCloseChat={toggleChatVisibility}
-            activeProjectData={activeProjectData}
             setActiveProjectData={setActiveProjectData}
           />
         )}

@@ -1,14 +1,4 @@
 /* Pastikan variabel warna ini ada di file CSS global Anda */
-:root {
-  --color-primary: #F2EDD1;
-  --color-secondary: #689B8A;
-  --color-tertiary: #F9CB99;
-  --color-neutral-text: #280A3E;
-  --color-neutral-bg: #EAE6CC;
-  --color-neutral-border: #D1CDAE;
-  --color-text-on-accent: #F2EDD1;
-}
-
 .chat-container {
   flex: 1;
   display: flex;
@@ -159,6 +149,15 @@
 
 .file-upload-button:hover {
   background-color: var(--color-neutral-border);
+}
+
+.file-upload-button svg {
+  /* 1. Atur Ukuran Ikon */
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  /* 3. (Opsional) Transisi untuk Efek Halus */
+  transition: fill 0.2s ease;
 }
 
 .scroll-to-bottom-button {

@@ -1,6 +1,10 @@
 import { formatCurrency } from '../../api/data/mockData';
 import { CheckCircle, User, ImageIcon, X, Trash2 } from 'lucide-react';
 
+
+// const onVerify= (id) => {
+
+// }
 // Komponen kecil untuk setiap baris tabel
 export const TableRow = ({ expense, userRole, onVerify, setViewingReceipt, selectedIds, handleSelectOne }) => (
   <tr className="table-row">

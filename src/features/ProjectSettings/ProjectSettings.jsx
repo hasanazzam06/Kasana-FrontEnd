@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { User, ShieldCheck, ArrowUpCircle, Clipboard, ClipboardCheck } from 'lucide-react';
 import './ProjectSettings.css'; // Kita akan buat file CSS baru
 

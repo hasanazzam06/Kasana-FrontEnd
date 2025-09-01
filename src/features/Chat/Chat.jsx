@@ -1,30 +1,21 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { X } from 'lucide-react';
 import { useChat }  from '../../hooks/useChat';
+import { fetchChat } from './api';
+import Icon from '../../components/Icon/Icon'
 import './Chat.css';
 
-const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectData }) => {
+const Chat = ({ chatHistory, onCloseChat, setActiveProjectData }) => {
   const chatMessagesRef = useRef(null);
   const fileInputRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
-    const fetchChat = async () => {
-      try {
-        const response = await fetch('/api/projects/user');
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data proyek');
-        }
-        const result = await response.json();
-        chatHistory(result.data.chatHistory); // Data awal disimpan di state
-      } catch (error) {
-        console.error("Error fetching projects: ", error);
-      }
-    };
-    fetchChat();
+    fetchChat(chatHistory);
   });
 
   const { chatInput, setChatInput, handleChatSubmit, handleFileUpload } = 
-    useChat(activeProjectData, setActiveProjectData);
+    useChat(setActiveProjectData);
 
   // Efek untuk auto-scroll ketika ada pesan baru
   useEffect(() => {
@@ -38,11 +29,6 @@ const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectDat
       handleChatSubmit();
     }
   };
-
-  const handleFileButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
   // Logika untuk menampilkan atau menyembunyikan tombol scroll
   const handleScroll = () => {
     if (chatMessagesRef.current) {
@@ -63,7 +49,7 @@ const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectDat
       <div className="chat-header">
         <h3 className="chat-title">Chat AI</h3>
         <button className="close-chat-button" onClick={onCloseChat}>
-          &times;
+          <X size={15} />
         </button>
       </div>
       <div
@@ -77,13 +63,6 @@ const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectDat
           </div>
         ))}
       </div>
-
-      {showScrollButton && (
-        <button className="scroll-to-bottom-button" onClick={scrollToBottom}>
-          ↓
-        </button>
-      )}
-
       <div className="chat-input-area">
         <input
           type="file"
@@ -91,8 +70,8 @@ const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectDat
           style={{ display: 'none' }}
           onChange={(e) => handleFileUpload(e.target.files)}
         />
-        <button className="file-upload-button" onClick={handleFileButtonClick}>
-          📁
+        <button className="file-upload-button" onClick={() => fileInputRef.current.click()}>
+          <Icon name='folderUp'/>
         </button>
         <input
           type="text"
@@ -106,6 +85,11 @@ const Chat = ({ chatHistory, onCloseChat, activeProjectData, setActiveProjectDat
           Kirim
         </button>
       </div>
+      {showScrollButton && (
+        <button className="scroll-to-bottom-button" onClick={scrollToBottom}>
+          ↓
+        </button>
+      )}
     </div>
   );
 };

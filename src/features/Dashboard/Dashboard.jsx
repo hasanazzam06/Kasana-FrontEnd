@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { fetchDashboard } from './api';
 
 import {
   Wallet, ArrowDownCircle, ShieldCheck, Clock, TrendingUp
@@ -14,21 +15,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchDashboard = async () => {
-      try {
-        const response = await fetch('/api/expenses/dashboard');
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data proyek');
-        }
-        const result = await response.json();
-        setDashboardData(result.data.dashboardData);
-      } catch (error) {
-        console.error("Error fetching projects: ", error);
-      }  finally {
-        setLoading(false); // Apapun hasilnya, loading selesai
-      }
-    };
-    fetchDashboard();
+    fetchDashboard(setDashboardData, setLoading);
   }, []);
 
   if (loading) {
