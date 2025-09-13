@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../api/data/mockData';
+import { formatCurrency } from '../../../api/data/mockData';
 import { CheckCircle, User, ImageIcon, X, Trash2 } from 'lucide-react';
 
 

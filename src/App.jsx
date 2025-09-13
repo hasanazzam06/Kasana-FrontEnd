@@ -38,11 +38,8 @@ const App = () => {
   const { projectExpenses, handleVerifyExpense, handleDeleteExpenses } =
     useExpenses(MOCK_EXPENSES, currentProject, user);
 
-  const { activeProjectData, setActiveProjectData, activeProjectId, setActiveProjectId } = 
+  const { activeProjectId, setActiveProjectId } = 
     useProject();
-
-  // const { chatInput, setChatInput, handleChatSubmit, handleFileUpload } = 
-  //   useChat(activeProjectData, setActiveProjectData)
 
   const handleProjectSelect = (projectId) => {
     setActiveProjectId(projectId);
@@ -108,9 +105,7 @@ const App = () => {
         </div>
         {isChatVisible && (
           <Chat
-            chatHistory={activeProjectData?.chatHistory || []}
             onCloseChat={toggleChatVisibility}
-            setActiveProjectData={setActiveProjectData}
           />
         )}
       </div>

@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../api/data/mockData';
+import { formatCurrency } from '../../../api/data/mockData';
 
 const StatCard = ({ title, amount, icon, iconBg, iconColor }) => (
   <div className="card-container grid-item">

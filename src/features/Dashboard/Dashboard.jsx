@@ -6,9 +6,9 @@ import {
 } from 'lucide-react';
 
 import './Dashboard.css';
-import StatCard from './StatCard';
-import BarCard from './BarCard';
-import PieCard from './PieCard';
+import StatCard from './components/StatCard';
+import BarCard from './components/BarCard';
+import PieCard from './components/PieCard';
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);

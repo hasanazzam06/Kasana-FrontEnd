@@ -5,17 +5,18 @@ import { fetchChat } from './api';
 import Icon from '../../components/Icon/Icon'
 import './Chat.css';
 
-const Chat = ({ chatHistory, onCloseChat, setActiveProjectData }) => {
+const Chat = ({onCloseChat}) => {
   const chatMessagesRef = useRef(null);
   const fileInputRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [chatHistory, setChatHistory] = useState([]);
+  const [chatInput, setChatInput] = useState('');
 
   useEffect(() => {
-    fetchChat(chatHistory);
-  });
+    fetchChat(setChatHistory);
+  }, []);
 
-  const { chatInput, setChatInput, handleChatSubmit, handleFileUpload } = 
-    useChat(setActiveProjectData);
+  const { handleChatSubmit, handleFileUpload } = useChat();
 
   // Efek untuk auto-scroll ketika ada pesan baru
   useEffect(() => {
@@ -26,7 +27,7 @@ const Chat = ({ chatHistory, onCloseChat, setActiveProjectData }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      handleChatSubmit();
+      handleChatSubmit(chatInput, setChatInput, setChatHistory);
     }
   };
   // Logika untuk menampilkan atau menyembunyikan tombol scroll
@@ -68,7 +69,7 @@ const Chat = ({ chatHistory, onCloseChat, setActiveProjectData }) => {
           type="file"
           ref={fileInputRef}
           style={{ display: 'none' }}
-          onChange={(e) => handleFileUpload(e.target.files)}
+          onChange={(e) => handleFileUpload(e.target.files, setChatHistory)}
         />
         <button className="file-upload-button" onClick={() => fileInputRef.current.click()}>
           <Icon name='folderUp'/>
@@ -81,7 +82,7 @@ const Chat = ({ chatHistory, onCloseChat, setActiveProjectData }) => {
           onChange={(e) => setChatInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button className="send-button" onClick={handleChatSubmit}>
+        <button className="send-button" onClick={() => handleChatSubmit(chatInput, setChatInput, setChatHistory)}>
           Kirim
         </button>
       </div>

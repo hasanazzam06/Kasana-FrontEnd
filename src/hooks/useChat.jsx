@@ -1,66 +1,40 @@
-import { useState } from 'react';
+import { fecthChatSubmit, fetchFileSubmit } from '../features/Chat/api';
 
-export const useChat = (setActiveProjectData) => {
-  const [chatInput, setChatInput] = useState('');
-
-  const handleChatSubmit = () => {
+export const useChat = () => {
+  const handleChatSubmit = async (chatInput, setChatInput, setChatHistory) => {
     if (chatInput.trim() !== '') {
-      const newUserMessage = {
+      const newChat = {
         id: Date.now(), // Gunakan timestamp untuk ID unik
+        userId: 'user-1',
+        projectId: 'proj-2',
         user: 'user',
         text: chatInput,
       };
-
-      // Perbarui chat history dengan pesan pengguna
-      setActiveProjectData(prevData => ({
-        ...prevData,
-        chatHistory: [...(prevData.chatHistory || []), newUserMessage],
-      }));
+      setChatHistory((prev) => [...(prev|| []), newChat]);
+      const responseAI = await fecthChatSubmit(newChat);
       setChatInput('');
-
-      // Simulasi balasan dari AI
-      setTimeout(() => {
-        const aiReply = {
-          id: Date.now() + 1,
-          user: 'ai',
-          text: `Halo, saya menerima pesan Anda: "${chatInput}". Silakan tunggu verifikasi.`,
-        };
-        setActiveProjectData(prevData => ({
-          ...prevData,
-          chatHistory: [...prevData.chatHistory, aiReply],
-        }));
-      }, 1000); // Balas setelah 1 detik
+      setChatHistory((prev) => [...(prev|| []), responseAI]);
     }
   };
 
-  const handleFileUpload = (files) => {
+  const handleFileUpload = async (files, setChatHistory) => {
     if (files.length > 0) {
       const fileName = files[0].name;
       const fileMessage = {
         id: Date.now(),
+        userId: 'user-1',
+        projectId: 'proj-2',
         user: 'user',
         text: `Mengunggah file: ${fileName}`,
       };
       
-      setActiveProjectData(prevData => ({
-        ...prevData,
-        chatHistory: [...prevData.chatHistory, fileMessage],
-      }));
+      setChatHistory((prev) => [...(prev|| []), fileMessage]);
 
-      // Simulasi balasan dari AI setelah file diunggah
-      setTimeout(() => {
-        const aiReply = {
-          id: Date.now() + 1,
-          user: 'ai',
-          text: `File "${fileName}" telah diterima. Terima kasih!`,
-        };
-        setActiveProjectData(prevData => ({
-          ...prevData,
-          chatHistory: [...prevData.chatHistory, aiReply],
-        }));
-      }, 1000);
+      const { responseAI } = await fetchFileSubmit(files, fileMessage);
+
+      setChatHistory((prev) => [...(prev|| []), responseAI]);
     }
   };
 
-  return { chatInput, setChatInput, handleChatSubmit, handleFileUpload };
+  return { handleChatSubmit, handleFileUpload };
 };

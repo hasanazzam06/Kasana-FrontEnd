@@ -2,7 +2,7 @@ import {
   BarChart, Bar, PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend, XAxis, YAxis 
 } from 'recharts';
 import { LineChart, Line, CartesianGrid } from 'recharts'; // Impor komponen untuk LineChart
-import { formatCurrency } from '../../api/data/mockData';
+import { formatCurrency } from '../../../api/data/mockData';
 
 const BarCard = ({ data }) => (
   <div className="grid-item chart-container trend-chart-dominant">

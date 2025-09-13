@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, Trash2 } from 'lucide-react';
-import { TableRow } from './TableRow';
+import { TableRow } from './components/TableRow';
 import { fetchTable } from './api';
 import './ExpenseTable.css'; // Impor file CSS baru
 

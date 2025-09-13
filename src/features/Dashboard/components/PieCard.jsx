@@ -1,7 +1,7 @@
 import { 
   PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
-import { formatCurrency } from '../../api/data/mockData';
+import { formatCurrency } from '../../../api/data/mockData';
 
 const PieCard = ({ data, COLORS }) => (
   <div className="chart-container grid-item pie-chart-container">
